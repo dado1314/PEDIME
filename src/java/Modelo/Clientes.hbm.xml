@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-dic-2017 16:44:04 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Clientes" table="clientes" catalog="menu_electronico" optimistic-lock="version">
+        <id name="idCliente" type="int">
+            <column name="idCliente" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuarios" class="Modelo.Usuarios" fetch="select">
+            <column name="idUsuario" not-null="true" />
+        </many-to-one>
+        <property name="razonSocial" type="string">
+            <column name="RazonSocial" length="45" />
+        </property>
+        <property name="cuit" type="string">
+            <column name="CUIT" length="11" />
+        </property>
+        <property name="condicionIva" type="string">
+            <column name="CondicionIVA" length="15" />
+        </property>
+        <property name="domicilio" type="string">
+            <column name="Domicilio" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="50" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="Telefono" length="15" />
+        </property>
+        <set name="pedidoses" table="pedidos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCliente" not-null="true" />
+            </key>
+            <one-to-many class="Modelo.Pedidos" />
+        </set>
+    </class>
+</hibernate-mapping>

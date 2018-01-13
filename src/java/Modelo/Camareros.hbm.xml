@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-dic-2017 16:44:04 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Camareros" table="camareros" catalog="menu_electronico" optimistic-lock="version">
+        <id name="idCamarero" type="int">
+            <column name="idCamarero" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuarios" class="Modelo.Usuarios" fetch="select">
+            <column name="idUsuario" not-null="true" />
+        </many-to-one>
+        <property name="camarero" type="string">
+            <column name="Camarero" length="45" />
+        </property>
+        <set name="mesas" table="mesa" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCamarero" not-null="true" />
+            </key>
+            <one-to-many class="Modelo.Mesa" />
+        </set>
+    </class>
+</hibernate-mapping>

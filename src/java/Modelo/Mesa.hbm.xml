@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-dic-2017 16:44:04 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Mesa" table="mesa" catalog="menu_electronico" optimistic-lock="version">
+        <id name="idMesa" type="java.lang.Integer">
+            <column name="idMesa" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="camareros" class="Modelo.Camareros" fetch="select">
+            <column name="idCamarero" not-null="true" />
+        </many-to-one>
+        <property name="numeroMesa" type="java.lang.Integer">
+            <column name="Numero_Mesa" />
+        </property>
+        <set name="pedidoses" table="pedidos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idMesa" not-null="true" />
+            </key>
+            <one-to-many class="Modelo.Pedidos" />
+        </set>
+    </class>
+</hibernate-mapping>

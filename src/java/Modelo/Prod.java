@@ -76,7 +76,7 @@ public class Prod extends HttpServlet {
                 ps.setBoolean(4, Disp);
                 ps.setInt(5, Cate);
                 ps.setInt(6, Area);
-                ps.setBlob(7, imag1);
+                //ps.setBlob(7, imag1);
 
                 int res = ps.executeUpdate();
                 con.close();

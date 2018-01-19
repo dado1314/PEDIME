@@ -9,7 +9,7 @@ public class conectar {
     
     public static final String url = "jdbc:mysql://localhost:3306/menu_electronico";
     public static final String username = "root";
-    public static final String password = "NicoLepo72";
+    public static final String password = "dado1314";
     
     public static Connection Conecto(){
         Connection con = null;
@@ -17,7 +17,7 @@ public class conectar {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             con = (Connection) DriverManager.getConnection(url, username, password);
-            //JOptionPane.showMessageDialog(null,"Coneccion Exitosa");
+            JOptionPane.showMessageDialog(null,"Coneccion Exitosa");
             
         } catch(HeadlessException | ClassNotFoundException | SQLException e){
             System.out.println(e);
